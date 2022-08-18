@@ -1,0 +1,17 @@
+.container {
+  width: 100wh;
+  height: 100vh;
+  min-height: 200px;
+}
+
+.githubLink {
+  display: inline-block;
+  width: 70px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.githubLogo {
+  margin: 0;
+  max-width: 60px;
+}
