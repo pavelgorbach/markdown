@@ -1,10 +1,9 @@
 import { ChangeEvent, useState } from 'react' 
-import { Stack, Button, Container, Collapse, Row, Col, Toast, Form } from 'react-bootstrap' 
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
+import GitHub from './GitHub_Logo.png'
 
-import gitHubLogo from './GitHub_Logo.png'
-import styles from './App.module.css'
+import styles from './App.module.scss'
 import { defaultText } from './constants'
 
 marked.setOptions({
@@ -25,58 +24,47 @@ export default function App() {
   
   return (
     <div className={styles.container}>
-      <Container fluid className="p-3 bg-light">
-        <Stack direction='horizontal' gap={2}>
-          <h1 className="ms-auto">Markdown Previewer</h1>
-          <Button variant="light">
-            <a href="https://github.com/pavelgorbach/markdown" target="blank" rel="noopener noreferrer">
-              <img src={gitHubLogo} className={styles.githubLogo} alt="GitHub" />
-            </a>
-          </Button>
-        </Stack>
+       <header className={styles.header}>
+         <a className={styles.githubButton} href="https://github.com/pavelgorbach/markdown" target="blank">
+           <img src={GitHub} alt="GitHub" />  
+         </a>
+         <h1>Markdown Previewer</h1>
+       </header>
 
-        <Row xs={1} md={visible === 'all' ? 2 : 1} className={styles.row}>
-          <Collapse in={visible !== 'preview'}>
-            <Col>
-              <Toast className="d-flex flex-column h-100 w-auto">
-                <Toast.Header closeButton={false}>
-                  <strong className="me-auto">Editor</strong>
-                  <i
-                    className={`ms-auto fa ${visible === 'all' ? "fa-expand" : "fa-compress"}`}
-                    onClick={() => setVisible(visible === 'all' ? 'editor' : 'all')}
-                  />
-                </Toast.Header>
-                <Toast.Body className="p-0 d-flex flex-grow-1">
-                  <Form.Control
-                    as="textarea"
-                    onChange={onChangeText}
-                    value={text}
-                    className={[styles.textArea, 'border-0'].join(' ')}
-                    id="editor"
-                  />
-                </Toast.Body>
-              </Toast>
-            </Col>
-          </Collapse>
+      <main className={[styles.main, visible === 'all' ? styles.twoColumns : styles.onColumn].join(' ')}>
+        {visible !== 'preview' && (
+          <div className={styles.editorContainer}>
+            <div className={styles.editorHeader}>
+              <strong>Editor</strong>
+              <i
+                role="button"
+                className={`fa ${visible === 'all' ? "fa-expand" : "fa-compress"}`}
+                onClick={() => setVisible(visible === 'all' ? 'editor' : 'all')}
+              />
+            </div>
+            <textarea
+              className={styles.textarea}
+              onChange={onChangeText}
+              value={text}
+              id="editor"
+            />
+          </div>
+        )}
 
-          <Collapse in={visible !== 'editor'}>
-            <Col>
-              <Toast className="w-auto">
-                <Toast.Header closeButton={false}>
-                  <strong className="me-auto">Previewer</strong>
-                  <i
-                    className={`ms-auto fa ${visible === 'all' ? "fa-expand" : "fa-compress"}`}
-                    onClick={() => setVisible(visible === 'all' ? 'preview' : 'all')}
-                  />
-                </Toast.Header>
-                <Toast.Body>
-                  <div id="preview" dangerouslySetInnerHTML={{ __html: parsedText }}/>
-                </Toast.Body>
-              </Toast>
-            </Col>
-          </Collapse>
-        </Row>
-      </Container>
+        {visible !== 'editor' && (
+          <div>
+            <div className={styles.editorHeader}>
+              <strong>Previewer</strong>
+              <i
+                role="button"
+                className={`fa ${visible === 'all' ? "fa-expand" : "fa-compress"}`}
+                onClick={() => setVisible(visible === 'all' ? 'preview' : 'all')}
+              />
+            </div>
+            <div id="preview" dangerouslySetInnerHTML={{ __html: parsedText }}/>
+          </div>
+        )}
+      </main>
     </div>
   )
 }

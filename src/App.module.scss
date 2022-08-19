@@ -1,0 +1,58 @@
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.githubButton {
+  width: 70px;
+  margin-left: auto;
+
+  img {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+.main {
+  display: grid;
+  column-gap: 20px;
+}
+
+.oneColumn {
+  grid-template-columns: 1fr;
+}
+
+.twoColumns {
+  grid-template-columns: 1fr 1fr;
+  @media only screen and (max-width: 650px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.editorContainer {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  margin-bottom: 50px;
+}
+
+.editorHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical;
+}
