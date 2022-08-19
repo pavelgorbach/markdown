@@ -1,6 +1,6 @@
 # Markdown Previewer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed to [Heroku](https://mrkdwn-previewer.herokuapp.com/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed to [Firebase hosting](https://mrkdwn-previewer.web.app/).
 
 ## Description
 You can find description on [freeCodeCamp](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-markdown-previewer)
@@ -28,5 +28,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
