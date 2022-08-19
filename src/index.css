@@ -21,7 +21,7 @@ img {
 pre {
   display: block;
   overflow: auto;
-  background: white;
+  background-color: rgb(240, 241, 242);
   padding: 5px;
   line-height: 1.2;
 }

@@ -2,6 +2,7 @@
   width: 100wh;
   height: 100vh;
   min-height: 200px;
+  background: rgb(248, 249, 250);
 }
 
 .githubLink {
@@ -14,4 +15,8 @@
 .githubLogo {
   margin: 0;
   max-width: 60px;
+}
+
+.row {
+  min-height: 88vh;
 }
